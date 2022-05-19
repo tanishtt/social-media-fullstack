@@ -10,7 +10,9 @@ const User=require('../models/user');
 
 
 let opts={
-    jwtFromRequest:extractJWT.fromAuthHeaderAsBearerToken,
+    //this method will create a new extractor that look for authorization header with bearer
+    //find the user from header and decrypt that using header.
+    jwtFromRequest:extractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey:"thisIsKey",
 
 

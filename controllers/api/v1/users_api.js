@@ -8,18 +8,19 @@ module.exports.createSession=async function(req,res)
     let user=await User.findOne({email:req.body.email});
     if(!user||user.password!=req.body.password)
     {
-        return res.json(422,{
+        return res.status(422).json({
             message:"invalid username or password"
         });
     }
 
-//find the user by email, if ppassword match we will return status and message along with a token with help of jwtLibrary
+//find the user by email, if password match we will return status and message along with a token with help of jwtLibrary
     return res.json(200,{
         message:"sign in successfull, here is your token please keep it safe",
         data:{
-            token:jwt.sign(user.toJSON(),'thisIsKey',{expiresIn:'10000'})
+            token:jwt.sign(user.toJSON(),'thisIsKey',{expiresIn:'100000'})
         }
     })
+    //this token we are going to use very soon just to authenticate the user for other request
     }
     catch(err)
     {
