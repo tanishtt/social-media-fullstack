@@ -2,12 +2,12 @@ const nodemailer=require('nodemailer');
 const ejs=require('ejs');
 const path=require('path');
 
-//this is the partt which sends the email.
+//this is the part which sends the email.
 
 let transporter=nodemailer.createTransport({
     service:'gmail',
     host:'smtp.gmail.com',
-    //email submmission port:58
+    //email submmission port:587
     //smtp over ssl/tls worrks over port 587
     port:587,
     secure:false,
